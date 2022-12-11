@@ -5,6 +5,7 @@ const generateArray = (length, max) => (
 
 const arr = generateArray(100, 100)
 console.log(JSON.stringify(arr))
+
 let count = 0
 
 function bubbleSort(arr) {
