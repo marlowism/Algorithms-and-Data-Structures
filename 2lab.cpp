@@ -42,7 +42,6 @@ long long find(int l, int r, p(&a)[100000]) {
         total_ans = h;
     }
 
-
     long long left = l;
     long long middle = (l + r) / 2;
 
