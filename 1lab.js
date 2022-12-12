@@ -1,7 +1,7 @@
-class Node{
-    constructor(value,next=null) {
-        this.value=value
-        this.next=next
+class Node {
+    constructor(value, next = null) {
+        this.value = value
+        this.next = next
     }
 }
 
@@ -11,17 +11,17 @@ class LinkedList {
         this.tail = null
     }
 
-    toArray(){
-            const nodes=[]
+    toArray() {
+        const nodes = []
 
-            let currentNode = this.head
+        let currentNode = this.head
 
-            while (currentNode){
-                nodes.push(currentNode)
-                currentNode=currentNode.next
-            }
-            return nodes
+        while (currentNode) {
+            nodes.push(currentNode)
+            currentNode = currentNode.next
         }
+        return nodes
+    }
 
     append(value) {
         const newNode = new Node(value)
@@ -144,18 +144,18 @@ class LinkedList {
             return null;
         }
 
-        let size=this.size()
+        let size = this.size()
 
-        if (index===0){
+        if (index === 0) {
             this.prepend(value)
             return 0
         }
 
-        if (index>--size) return null
+        if (index > --size) return null
 
         let currentNode = this.head
 
-        if(index === 1) {
+        if (index === 1) {
             let NewNode = new (Node)
             NewNode.value = value
             NewNode.next = currentNode.next
@@ -163,10 +163,10 @@ class LinkedList {
             return null
         }
 
-        while(currentNode.next){
+        while (currentNode.next) {
             --index;
-            currentNode=currentNode.next
-            if(index === 1) {
+            currentNode = currentNode.next
+            if (index === 1) {
                 let NewNode = new (Node)
                 NewNode.value = value
                 NewNode.next = currentNode.next
@@ -177,63 +177,95 @@ class LinkedList {
     }
 
     deleteNode(index) {
-            if (!this.head) {
-                return null;
-            }
-
-            let currentNode = this.head
-            let size=this.size()
-
-            if (index>--size) return null
-
-            if (index===--size){
-                this.popBack()
-                return null
-            }
-
-            if (index === 0) {
-                this.popFront()
-                return null
-            }
-
-          let count=1
-            while (count < index) {
-                currentNode = currentNode.next
-                count++
-            }
-            currentNode.next=currentNode.next.next
+        if (!this.head) {
+            return null;
         }
+
+        let currentNode = this.head
+        let size = this.size()
+
+        if (index > --size) return null
+
+        if (index === --size) {
+            this.popBack()
+            return null
+        }
+
+        if (index === 0) {
+            this.popFront()
+            return null
+        }
+
+        let count = 1
+        while (count < index) {
+            currentNode = currentNode.next
+            count++
+        }
+        currentNode.next = currentNode.next.next
+    }
 
 }
 
-    const list=new LinkedList()
-    const list2=new LinkedList()
-    list2.append('a')
-    list2.append('b')
-    list2.append('c')
-    list.append('0')
-    list.append('1')
-    list.append('2')
-    console.log(JSON.stringify(list))
-    console.log(JSON.stringify(list2))
+const list = new LinkedList()
+const list2 = new LinkedList()
+list2.append('a')
+list2.append('b')
+list2.append('c')
+list2.append('d')
+list2.append('f')
+list.append('0')
+list.append('1')
+list.append('2')
+list.append('3')
+list.append('4')
+list.append('5')
 
-    function insert(index){
+console.log('list 1: ',JSON.stringify(list))
+console.log('list 2: ',JSON.stringify(list2))
 
-        let currentNode=list.head
-        let newNode=new(Node)
-        while (currentNode.next){
-            --index
-            currentNode=currentNode.next
-            if (index===0){
-                let curNode2=list2.head
-                while(curNode2.next){
-                    newNode.next=curNode2.next
-                    currentNode.value=curNode2.value
-                    currentNode.next=curNode2.next
-                    curNode2.next=newNode
-                    return null
-                }
-            }
+function insert(index) {
+
+    if (list.head === null || list2.head === null || index > list.size()) return null
+
+    if (index > 0 && index < list.size()) {
+
+        let currentNode = list.head
+
+        for (let count = 0; count != index - 1; count++) {
+            currentNode = currentNode.next
+        }
+
+        let tempNode = currentNode.next
+
+        currentNode.next = list2.head
+
+        currentNode = list.head
+
+        while (currentNode.next) {
+            currentNode = currentNode.next
+        }
+        currentNode.next = tempNode
+    }
+
+    if (index === 0) {
+        let currentNode = list2.head
+        while (currentNode) {
+            list.insertBefore(index, currentNode.value)
+            currentNode = currentNode.next
+            ++index
         }
     }
-    console.log(insert(2))
+
+    if (index===list.size()){
+
+        let currentNode=list2.head
+
+        while (currentNode){
+            list.append(currentNode.value)
+            currentNode=currentNode.next
+        }
+    }
+}
+
+insert(2)
+console.log(JSON.stringify(list))
