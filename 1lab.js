@@ -206,23 +206,6 @@ class LinkedList {
 
 }
 
-const list = new LinkedList()
-const list2 = new LinkedList()
-list2.append('a')
-list2.append('b')
-list2.append('c')
-list2.append('d')
-list2.append('f')
-list.append('0')
-list.append('1')
-list.append('2')
-list.append('3')
-list.append('4')
-list.append('5')
-
-console.log('list 1: ',JSON.stringify(list))
-console.log('list 2: ',JSON.stringify(list2))
-
 function insert(index) {
 
     if (list.head === null || list2.head === null || index > list.size()) return null
@@ -266,6 +249,3 @@ function insert(index) {
         }
     }
 }
-
-insert(2)
-console.log(JSON.stringify(list))
