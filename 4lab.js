@@ -166,61 +166,51 @@ class binaryTree {
         if (this.root === null) {
             return null
         }
-        this.root = this.deleteNode(this.root, nodeValue);
+        this.root = this.deleteNode(this.root, nodeValue)
     }
 
     deleteNode(currentNode, itemValue)  {
         if (currentNode.value === itemValue) {
             if (currentNode.left === null && currentNode.right === null) {
-                return null;
+                return null
             }
 
             if (currentNode.left === null) {
-                return currentNode.right;
+                return currentNode.right
             }
 
             if (currentNode.right === null) {
-                return currentNode.left;
+                return currentNode.left
             }
 
-            const minNodeInRightSubtree = this.minEl(currentNode.right);
-            currentNode.value = minNodeInRightSubtree.value;
+            const minNodeInRightSubtree = this.minEl(currentNode.right)
+            currentNode.value = minNodeInRightSubtree.value
 
             currentNode.right = this.deleteNode(
                 currentNode.right,
                 minNodeInRightSubtree.value
-            );
-            return currentNode;
+            )
+            return currentNode
         }
 
         if (itemValue < currentNode.value) {
             if (currentNode.left === null) {
-                return currentNode;
+                return currentNode
             }
 
-            currentNode.left = this.deleteNode(currentNode.left, itemValue);
-            return currentNode;
+            currentNode.left = this.deleteNode(currentNode.left, itemValue)
+            return currentNode
         }
 
         if (itemValue > currentNode.value) {
             if (currentNode.right === null) {
-                return currentNode;
+                return currentNode
             }
 
-            currentNode.right = this.deleteNode(currentNode.right, itemValue);
-            return currentNode;
+            currentNode.right = this.deleteNode(currentNode.right, itemValue)
+            return currentNode
         }
     }
 
 
 }
-
-
-
-
-
-
-
-
-
-
