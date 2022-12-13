@@ -215,20 +215,6 @@ class binaryTree {
 
 }
 
-const tree = new binaryTree()
-
-tree.add(3)
-tree.add('+')
-tree.add(5)
-tree.add('*')
-tree.add(4)
-tree.add(213)
-tree.add(-32)
-tree.add('/')
-tree.add(2)
-tree.add('*')
-tree.add(100)
-
 
 
 
