@@ -51,18 +51,13 @@ long long find(int l, int r, p(&a)[100000]) {
         else if (a[middle].y < a[left].y) b[i] = a[middle++];
         else b[i] = a[left++];
     }
-    /// cout << "New group\n";
     for (int i = l; i < r; i++) {// O(r - l)
         a[i] = b[i];
-        //  cout << a[i].x << " " << a[i].y << endl;
     }
-    //cout << "H: " << h << endl << a[(l+r)/2].x << endl;
     vector <p> B;
-    // cout << "B:\n";
     for (int i = l; i < r; i++) {// O(r - l)
         if (abs(a[(l + r) / 2].x - a[i].x) * abs(a[(l + r) / 2].x - a[i].x) <= h) {
             B.push_back(a[i]);
-            //  cout << a[i].x << " " << a[i].y << endl;
         }
     }
 
@@ -78,7 +73,6 @@ long long find(int l, int r, p(&a)[100000]) {
                     x = 1;
                     total_ans = ans;
                 }
-                // cout << "sfldsg " << x << endl;
             }
             else break;
         }
@@ -90,11 +84,9 @@ long long find(int l, int r, p(&a)[100000]) {
                     x = 1;
                     total_ans = ans;
                 }
-                // cout << "sfldsg " << x << endl;
             }
             else break;
         }
-        //  cout << total_ans << " " << x << " " << B[i].x << " " << B[i].y << endl;
         if (x > 1) {
             is_ans_exist = 0;
         }
